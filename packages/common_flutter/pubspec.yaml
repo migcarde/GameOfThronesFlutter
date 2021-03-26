@@ -1,0 +1,22 @@
+name: common_flutter
+
+publish_to: none
+
+version: 1.0.0
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # External packages
+  connectivity: ^3.0.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+    
+flutter:
+  uses-material-design: true
