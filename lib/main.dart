@@ -1,17 +1,7 @@
-import 'package:common_flutter/app_config.dart';
 import 'package:flutter/material.dart';
-import 'package:game_of_thrones/main_screen.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'injection_container.dart' as di;
-import 'package:data/hive_configuration.dart' as hiveConfiguration;
 
-void main() async {
-  di.init();
-  await hiveConfiguration.initConfiguration();
-  AppConfig(
-      flavorName: 'dev',
-      baseUrl: 'private-anon-f7d0cd3499-androidtestmobgen.apiary-mock.com');
-  runApp(ProviderScope(child: MyApp()));
+void main() {
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MainScreen(),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
