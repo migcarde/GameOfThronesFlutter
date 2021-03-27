@@ -5,8 +5,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'injection_container.dart' as di;
 import 'package:data/hive_configuration.dart' as hiveConfiguration;
 
-void main() {
+void main() async {
   di.init();
+  await hiveConfiguration.initConfiguration();
   AppConfig(
       flavorName: 'dev',
       baseUrl: 'private-anon-f7d0cd3499-androidtestmobgen.apiary-mock.com');
@@ -16,7 +17,6 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    hiveConfiguration.initConfiguration();
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
