@@ -17,7 +17,7 @@ void init() {
   locator.registerLazySingleton(
       () => CategoryRemoteDataSource(categoryService: locator()));
 
-  locator.registerLazySingleton(() => CategoryLocalDataSource());
+  locator.registerLazySingleton(() => CategoryLocalDataSource(hive: locator()));
 
   locator.registerLazySingleton(() => CategoryService());
 }
