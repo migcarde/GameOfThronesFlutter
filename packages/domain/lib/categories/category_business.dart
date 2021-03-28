@@ -1,5 +1,5 @@
-import 'package:data/categories/category_hive_model.dart';
-import 'package:data/categories/category_model.dart';
+import 'package:data/operations/categories/category_hive_model.dart';
+import 'package:data/operations/categories/category_response.dart';
 
 class CategoryBusiness {
   late final String categoryName;
@@ -7,9 +7,9 @@ class CategoryBusiness {
 
   CategoryBusiness({required this.categoryName, required this.type});
 
-  factory CategoryBusiness.fromModel(CategoryModel model) =>
+  factory CategoryBusiness.fromResponse(CategoryResponse model) =>
       CategoryBusiness(categoryName: model.categoryName, type: model.type);
 
-  factory CategoryBusiness.fromHiveModelAdapter(CategoryHiveModel model) =>
+  factory CategoryBusiness.fromHiveModel(CategoryHiveModel model) =>
       CategoryBusiness(categoryName: model.categoryName, type: model.type);
 }

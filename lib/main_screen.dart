@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:game_of_thrones/main_screen_view_model.dart';
+import 'package:game_of_thrones/widgets/splash_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class MainScreen extends ConsumerWidget {
@@ -13,7 +14,7 @@ class MainScreen extends ConsumerWidget {
     return Container(
       child: categories.when(
           data: (data) => Text('HURRA'),
-          loading: () => CircularProgressIndicator(),
+          loading: () => SplashScreen(),
           error: (_, __) => Text('No response')),
     );
   }

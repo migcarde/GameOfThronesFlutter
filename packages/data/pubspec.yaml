@@ -17,6 +17,7 @@ dependencies:
   hive: ^2.0.0
   hive_flutter: ^1.0.0
   path_provider: ^2.0.1
+  get_it: ^6.0.0
 
   # Personal packages
   domain:
@@ -28,6 +29,10 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  # External packages
+  mockito: ^5.0.2
+  build_runner: ^1.12.2
 
   # External packages
   hive_generator: ^1.0.0

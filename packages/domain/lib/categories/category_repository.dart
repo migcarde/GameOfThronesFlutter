@@ -4,4 +4,5 @@ import 'package:domain/categories/category_business.dart';
 
 abstract class CategoryRepository {
   Future<Either<Failure, List<CategoryBusiness>>> getCategories();
+  Future<Either<Failure, List<CategoryBusiness>>> getLocalCategories();
 }
