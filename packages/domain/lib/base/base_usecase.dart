@@ -1,8 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:data/failure.dart';
 
-abstract class BaseUseCase<T, Params> {
-  Future<Either<Failure, T>> call(Params params);
+abstract class BaseUseCase<F, S, Params> {
+  Future<Either<F, S>> call(Params params);
 }
 
 class NoParams {}

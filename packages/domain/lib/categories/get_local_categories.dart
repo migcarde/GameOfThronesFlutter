@@ -4,14 +4,14 @@ import 'package:domain/categories/category_business.dart';
 import 'package:domain/categories/category_failure.dart';
 import 'package:domain/categories/category_repository.dart';
 
-class GetCategories
+class GetLocalCategories
     extends BaseUseCase<CategoryFailure, List<CategoryBusiness>, NoParams> {
-  late final CategoryRepository categoryRepository;
+  final CategoryRepository categoryRepository;
 
-  GetCategories({required this.categoryRepository});
+  GetLocalCategories({required this.categoryRepository});
 
   @override
   Future<Either<CategoryFailure, List<CategoryBusiness>>> call(
           NoParams params) =>
-      categoryRepository.getCategories();
+      categoryRepository.getLocalCategories();
 }

@@ -1,9 +1,11 @@
 import 'package:common_flutter/network_manager.dart';
 import 'package:dartz/dartz.dart';
-import 'package:data/failure.dart';
 import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
+import 'package:data/repository_failure.dart';
 import 'package:domain/categories/category_business.dart';
+import 'package:domain/categories/category_error.dart';
+import 'package:domain/categories/category_failure.dart';
 import 'package:domain/categories/category_repository.dart';
 
 class CategoryRepositoryImpl extends CategoryRepository {
@@ -15,7 +17,8 @@ class CategoryRepositoryImpl extends CategoryRepository {
       required this.categoryLocalDataSource});
 
   @override
-  Future<Either<Failure, List<CategoryBusiness>>> getCategories() async {
+  Future<Either<CategoryFailure, List<CategoryBusiness>>>
+      getCategories() async {
     try {
       if (await NetworkManager().hasInternetConnection()) {
         final categories = await categoryRemoteDataSource.getCategories();
@@ -29,15 +32,16 @@ class CategoryRepositoryImpl extends CategoryRepository {
       } else {
         throw NoInternet();
       }
-    } on Failure catch (failure) {
-      return Left(failure);
-    } catch (e) {
-      throw e;
+    } on RepositoryFailure catch (failure) {
+      return Left(CategoryRepositoryFailure(failure: failure));
+    } on CategoryError {
+      return Left(GetCategoriesError());
     }
   }
 
   @override
-  Future<Either<Failure, List<CategoryBusiness>>> getLocalCategories() async {
+  Future<Either<CategoryFailure, List<CategoryBusiness>>>
+      getLocalCategories() async {
     try {
       final categories = await categoryLocalDataSource.getCategories();
 
@@ -47,7 +51,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
 
       return Right(result);
     } catch (e) {
-      return Left(Unknown(message: 'Something is wrong'));
+      return Left(CategoryRepositoryFailure(failure: Unknown()));
     }
   }
 }
