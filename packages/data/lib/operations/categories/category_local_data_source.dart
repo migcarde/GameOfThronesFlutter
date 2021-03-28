@@ -18,7 +18,6 @@ class CategoryLocalDataSource {
 
   Future<List<CategoryHiveModel>> getCategories() async {
     final categoriesBox = await hive.openBox(CATEGORIES_BOX);
-    final aux = categoriesBox.toMap();
     final categories =
         categoriesBox.toMap().values.toList().cast<CategoryHiveModel>();
 
