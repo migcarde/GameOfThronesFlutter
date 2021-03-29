@@ -1,3 +1,4 @@
+import 'package:data/network_manager.dart';
 import 'package:data/operations/categories/category_hive_model.dart';
 import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
@@ -7,18 +8,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../books/book_repository_impl_test.mocks.dart';
 import 'category_repository_impl_test.mocks.dart';
 
-@GenerateMocks([CategoryRemoteDataSource, CategoryLocalDataSource])
+@GenerateMocks(
+    [CategoryRemoteDataSource, CategoryLocalDataSource, NetworkManager])
 void main() {
   var categoryRepository;
-  var categoryRemoteDataSource = MockCategoryRemoteDataSource();
-  var categoryLocalDataSource = MockCategoryLocalDataSource();
+  var mockCategoryRemoteDataSource = MockCategoryRemoteDataSource();
+  var mockCategoryLocalDataSource = MockCategoryLocalDataSource();
+  var mockNetworkManager = MockNetworkManager();
 
   setUp(() {
     categoryRepository = CategoryRepositoryImpl(
-        categoryRemoteDataSource: categoryRemoteDataSource,
-        categoryLocalDataSource: categoryLocalDataSource);
+        categoryRemoteDataSource: mockCategoryRemoteDataSource,
+        categoryLocalDataSource: mockCategoryLocalDataSource,
+        networkManager: mockNetworkManager);
   });
 
   tearDown(() {
@@ -32,20 +37,20 @@ void main() {
 
   test('Get local categories - Success', () async {
     // Given
-    when(categoryLocalDataSource.getCategories())
+    when(mockCategoryLocalDataSource.getCategories())
         .thenAnswer((realInvocation) async => hiveCategories);
 
     // When
     final result = await categoryRepository.getLocalCategories();
 
     // Then
-    verify(categoryLocalDataSource.getCategories());
+    verify(mockCategoryLocalDataSource.getCategories());
     expect(result.isRight(), true);
   });
 
-  test('Get local categories - Unknown Failure', () async {
+  test('Get local categories - Unknown failure', () async {
     // Given
-    when(categoryLocalDataSource.getCategories()).thenThrow(Exception);
+    when(mockCategoryLocalDataSource.getCategories()).thenThrow(Exception);
 
     // When
     final result = await categoryRepository.getLocalCategories();
@@ -56,8 +61,10 @@ void main() {
 
   test('Get remote categories - Success', () async {
     // Given
-    when(categoryRemoteDataSource.getCategories())
+    when(mockCategoryRemoteDataSource.getCategories())
         .thenAnswer((realInvocation) async => responseCategories);
+    when(mockNetworkManager.hasInternetConnection)
+        .thenAnswer((realInvocation) async => true);
 
     // When
     final result = await categoryRepository.getCategories();
@@ -68,8 +75,10 @@ void main() {
 
   test('Get remote categories - Failure', () async {
     // Given
-    when(categoryRemoteDataSource.getCategories())
+    when(mockCategoryRemoteDataSource.getCategories())
         .thenAnswer((realInvocation) async => responseCategories);
+    when(mockNetworkManager.hasInternetConnection)
+        .thenAnswer((realInvocation) async => false);
 
     // When
     final result = await categoryRepository.getCategories();

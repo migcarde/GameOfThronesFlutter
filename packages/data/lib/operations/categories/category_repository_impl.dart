@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:data/network_manager.dart';
 import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
 import 'package:data/repository_failure.dart';
@@ -10,16 +11,18 @@ import 'package:domain/operations/categories/category_repository.dart';
 class CategoryRepositoryImpl extends CategoryRepository {
   late final CategoryRemoteDataSource categoryRemoteDataSource;
   late final CategoryLocalDataSource categoryLocalDataSource;
+  late final NetworkManager networkManager;
 
   CategoryRepositoryImpl(
       {required this.categoryRemoteDataSource,
-      required this.categoryLocalDataSource});
+      required this.categoryLocalDataSource,
+      required this.networkManager});
 
   @override
   Future<Either<CategoryFailure, List<CategoryBusiness>>>
       getCategories() async {
     try {
-      if (await NetworkManager().hasInternetConnection()) {
+      if (await networkManager.hasInternetConnection) {
         final categories = await categoryRemoteDataSource.getCategories();
         categoryLocalDataSource.saveCategories(categories);
 

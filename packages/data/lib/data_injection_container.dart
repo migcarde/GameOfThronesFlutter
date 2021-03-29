@@ -19,7 +19,8 @@ void init() {
   locator.registerLazySingleton<CategoryRepository>(() =>
       CategoryRepositoryImpl(
           categoryRemoteDataSource: locator(),
-          categoryLocalDataSource: locator()));
+          categoryLocalDataSource: locator(),
+          networkManager: locator()));
   locator.registerLazySingleton<BookRepository>(() => BookRepositoryImpl(
       bookRemoteDataSource: locator(), networkManager: locator()));
 
