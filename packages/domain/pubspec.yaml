@@ -26,7 +26,7 @@ dev_dependencies:
 
   # External packages
   mockito: ^5.0.2
-  build_runner: ^1.12.2
+  build_runner:
     
 flutter:
   uses-material-design: true

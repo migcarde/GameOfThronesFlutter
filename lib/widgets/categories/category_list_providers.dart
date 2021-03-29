@@ -48,6 +48,7 @@ Error _handleCategoryError(CategoryFailure failure) {
   }
 }
 
+// Not considered cases like unauthorized or repository exception
 Error _handleRepositoryFailure(
     CategoryRepositoryFailure categoryRepositoryFailure) {
   if (categoryRepositoryFailure.failure is NoInternet) {

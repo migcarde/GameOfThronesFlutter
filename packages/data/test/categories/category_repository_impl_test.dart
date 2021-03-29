@@ -30,7 +30,6 @@ void main() {
   final responseCategories = [
     CategoryResponse(type: 0, categoryName: 'example')
   ];
-  final categories = [CategoryBusiness(categoryName: 'example', type: 0)];
 
   test('Get local categories - Success', () async {
     // Given

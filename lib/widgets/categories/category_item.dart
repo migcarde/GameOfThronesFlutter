@@ -8,20 +8,25 @@ import 'package:game_of_thrones/widgets/categories/category_view_entity.dart';
 
 class CategoryItem extends StatelessWidget {
   final CategoryViewEntity category;
-
-  const CategoryItem({Key? key, required this.category}) : super(key: key);
+  final Function(int) onClick;
+  const CategoryItem({Key? key, required this.category, required this.onClick})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: EdgeInsets.only(top: tinyDimen, bottom: tinyDimen),
-      padding: EdgeInsets.symmetric(
-          horizontal: mediumBigDimen, vertical: mediumDimen),
-      decoration: BoxDecorators.cardDecoration(Color(blueBackground)),
-      child: Text(
-        category.categoryName,
-        style: TextStyles.boldText(),
+    return GestureDetector(
+      onTap: () => onClick,
+      child: Container(
+        width: double.infinity,
+        margin: EdgeInsets.only(top: tinyDimen, bottom: tinyDimen),
+        padding: EdgeInsets.symmetric(
+            horizontal: mediumBigDimen, vertical: mediumDimen),
+        decoration: BoxDecorators.cardDecoration(Color(blueBackground)),
+        child: Text(
+          category.categoryName,
+          style: TextStyles.boldText(),
+          textDirection: TextDirection.ltr,
+        ),
       ),
     );
   }

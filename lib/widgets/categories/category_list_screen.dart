@@ -27,7 +27,10 @@ class CategoryListScreen extends ConsumerWidget {
           itemCount: state.result.length,
           itemBuilder: (context, index) => Padding(
               padding: EdgeInsets.symmetric(horizontal: mediumDimen),
-              child: CategoryItem(category: state.result[index])));
+              child: CategoryItem(
+                category: state.result[index],
+                onClick: (index) => null,
+              )));
     } else if (state is Empty) {
       return Center(
         child: Text(
