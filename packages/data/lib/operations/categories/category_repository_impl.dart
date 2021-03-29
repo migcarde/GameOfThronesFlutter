@@ -1,12 +1,11 @@
-import 'package:common_flutter/network_manager.dart';
 import 'package:dartz/dartz.dart';
 import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
 import 'package:data/repository_failure.dart';
-import 'package:domain/categories/category_business.dart';
-import 'package:domain/categories/category_error.dart';
-import 'package:domain/categories/category_failure.dart';
-import 'package:domain/categories/category_repository.dart';
+import 'package:domain/operations/categories/category_business.dart';
+import 'package:domain/operations/categories/category_error.dart';
+import 'package:domain/operations/categories/category_failure.dart';
+import 'package:domain/operations/categories/category_repository.dart';
 
 class CategoryRepositoryImpl extends CategoryRepository {
   late final CategoryRemoteDataSource categoryRemoteDataSource;
