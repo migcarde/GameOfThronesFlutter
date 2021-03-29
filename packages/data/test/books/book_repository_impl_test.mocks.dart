@@ -4,8 +4,8 @@
 
 import 'dart:async' as _i5;
 
-import 'package:common_flutter/network_manager.dart' as _i7;
 import 'package:connectivity/connectivity.dart' as _i3;
+import 'package:data/network_manager.dart' as _i7;
 import 'package:data/operations/books/book_remote_data_source.dart' as _i4;
 import 'package:data/operations/books/book_response.dart' as _i6;
 import 'package:data/operations/books/book_service.dart' as _i2;

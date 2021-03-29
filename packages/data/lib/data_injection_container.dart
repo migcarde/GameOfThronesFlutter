@@ -1,3 +1,5 @@
+import 'package:connectivity/connectivity.dart';
+import 'package:data/network_manager.dart';
 import 'package:data/operations/books/book_remote_data_source.dart';
 import 'package:data/operations/books/book_repository_impl.dart';
 import 'package:data/operations/books/book_service.dart';
@@ -8,6 +10,7 @@ import 'package:data/operations/categories/category_service.dart';
 import 'package:domain/operations/books/book_repository.dart';
 import 'package:domain/operations/categories/category_repository.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
 
 final locator = GetIt.instance;
 
@@ -31,5 +34,10 @@ void init() {
 
   // Service
   locator.registerLazySingleton(() => CategoryService());
-  locator.registerSingleton(() => BookService());
+  locator.registerLazySingleton(() => BookService());
+
+  // Others
+  locator.registerLazySingleton(() => Hive);
+  locator.registerLazySingleton(() => NetworkManager(connectivity: locator()));
+  locator.registerLazySingleton(() => Connectivity());
 }

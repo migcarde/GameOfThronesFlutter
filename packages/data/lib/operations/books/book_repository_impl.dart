@@ -1,4 +1,4 @@
-import 'package:common_flutter/network_manager.dart';
+import 'package:data/network_manager.dart';
 import 'package:data/operations/books/book_remote_data_source.dart';
 import 'package:data/repository_failure.dart';
 import 'package:domain/operations/books/book_business.dart';

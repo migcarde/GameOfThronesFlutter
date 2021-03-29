@@ -11,9 +11,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # External packages
-  connectivity: ^3.0.3
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

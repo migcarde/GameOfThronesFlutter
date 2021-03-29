@@ -15,7 +15,7 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => onClick,
+      onTap: () => onClick(category.type),
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.only(top: tinyDimen, bottom: tinyDimen),

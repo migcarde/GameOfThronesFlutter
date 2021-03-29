@@ -19,6 +19,7 @@ dependencies:
   path_provider: ^2.0.1
   get_it: ^6.0.0
   equatable: ^2.0.0
+  connectivity: ^3.0.3
 
   # Personal packages
   domain:

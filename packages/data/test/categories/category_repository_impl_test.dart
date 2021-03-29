@@ -3,7 +3,6 @@ import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
 import 'package:data/operations/categories/category_repository_impl.dart';
 import 'package:data/operations/categories/category_response.dart';
-import 'package:domain/categories/category_business.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

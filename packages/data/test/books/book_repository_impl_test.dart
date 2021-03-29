@@ -1,12 +1,11 @@
+import 'package:data/network_manager.dart';
 import 'package:data/operations/books/book_remote_data_source.dart';
 import 'package:data/operations/books/book_repository_impl.dart';
 import 'package:data/operations/books/book_response.dart';
 import 'package:data/repository_failure.dart';
-import 'package:domain/operations/books/book_business.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:common_flutter/network_manager.dart';
 
 import 'book_repository_impl_test.mocks.dart';
 

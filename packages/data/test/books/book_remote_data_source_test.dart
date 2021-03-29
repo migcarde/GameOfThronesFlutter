@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:common_flutter/network_manager.dart';
 import 'package:data/operations/books/book_remote_data_source.dart';
 import 'package:data/operations/books/book_response.dart';
 import 'package:data/operations/books/book_service.dart';
