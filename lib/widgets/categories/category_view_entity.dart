@@ -1,4 +1,4 @@
-import 'package:domain/categories/category_business.dart';
+import 'package:domain/operations/categories/category_business.dart';
 
 class CategoryViewEntity {
   late final String categoryName;

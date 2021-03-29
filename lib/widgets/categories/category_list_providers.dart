@@ -1,10 +1,10 @@
 import 'package:data/data_injection_container.dart';
 import 'package:data/repository_failure.dart';
 import 'package:domain/base/base_usecase.dart';
-import 'package:domain/categories/category_business.dart';
-import 'package:domain/categories/category_failure.dart';
-import 'package:domain/categories/get_categories.dart';
-import 'package:domain/categories/get_local_categories.dart';
+import 'package:domain/operations/categories/category_business.dart';
+import 'package:domain/operations/categories/category_failure.dart';
+import 'package:domain/operations/categories/get_categories.dart';
+import 'package:domain/operations/categories/get_local_categories.dart';
 import 'package:game_of_thrones/base/base_list_state.dart';
 import 'package:game_of_thrones/widgets/categories/category_view_entity.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

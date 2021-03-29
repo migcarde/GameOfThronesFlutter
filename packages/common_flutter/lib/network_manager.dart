@@ -2,9 +2,13 @@ import 'package:connectivity/connectivity.dart';
 import 'package:flutter/foundation.dart';
 
 class NetworkManager {
-  Future<bool> hasInternetConnection() async {
+  late final Connectivity connectivity;
+
+  NetworkManager({required this.connectivity});
+
+  Future<bool> get hasInternetConnection async {
     if (!kIsWeb) {
-      final conectivity = await (Connectivity().checkConnectivity());
+      final conectivity = await (connectivity.checkConnectivity());
 
       return conectivity != ConnectivityResult.none;
     }
