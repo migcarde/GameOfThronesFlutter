@@ -3,6 +3,8 @@ import 'package:data/repository_failure.dart';
 import 'package:domain/base/base_usecase.dart';
 import 'package:domain/operations/categories/category_business.dart';
 import 'package:domain/operations/categories/category_failure.dart';
+import 'package:domain/operations/categories/category_repository.dart';
+import 'package:domain/operations/categories/get_categories.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
