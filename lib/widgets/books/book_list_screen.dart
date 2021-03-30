@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:game_of_thrones/base/base_list_state.dart';
 import 'package:game_of_thrones/common/text_styles.dart';
 import 'package:game_of_thrones/widgets/books/book_item.dart';

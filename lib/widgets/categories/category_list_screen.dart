@@ -6,6 +6,8 @@ import 'package:game_of_thrones/common/text_styles.dart';
 import 'package:game_of_thrones/widgets/books/book_list_screen.dart';
 import 'package:game_of_thrones/widgets/categories/category_item.dart';
 import 'package:game_of_thrones/widgets/categories/category_list_providers.dart';
+import 'package:game_of_thrones/widgets/categories/category_view_entity.dart';
+import 'package:game_of_thrones/widgets/houses/house_list_screen.dart';
 import 'package:game_of_thrones/widgets/splash_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -30,12 +32,9 @@ class CategoryListScreen extends ConsumerWidget {
           itemBuilder: (context, index) => Padding(
               padding: EdgeInsets.symmetric(horizontal: mediumDimen),
               child: CategoryItem(
-                category: state.result[index],
-                onClick: (type) => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => BookListScreen(type: type))),
-              )));
+                  category: state.result[index],
+                  onClick: (type) =>
+                      Navigator.push(context, _selectPage(type)))));
     } else if (state is Empty) {
       return Center(
         child: Text(
@@ -47,5 +46,19 @@ class CategoryListScreen extends ConsumerWidget {
       final error = state as Error;
       return Center(child: Text(error.message));
     }
+  }
+
+  MaterialPageRoute _selectPage(int type) {
+    final MaterialPageRoute result;
+
+    if (type == BOOKS) {
+      result =
+          MaterialPageRoute(builder: (context) => BookListScreen(type: type));
+    } else {
+      result =
+          MaterialPageRoute(builder: (context) => HouseListScreen(type: type));
+    }
+
+    return result;
   }
 }

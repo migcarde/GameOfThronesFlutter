@@ -7,9 +7,5 @@ const tinyBigDimen = 18.0;
 const bigDimen = 22.0;
 const veryBigDimen = 28.0;
 
-// Buttons
-const floatButtonIconDimen = 24.0;
-
-// Page View
-const pageViewHeight = 160.0;
-const viewPortFractionSize = 0.85;
+// Pictures
+const housePictureDimen = 100.0;

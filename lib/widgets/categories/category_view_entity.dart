@@ -1,5 +1,9 @@
 import 'package:domain/operations/categories/category_business.dart';
 
+const BOOKS = 1;
+const HOUSES = 2;
+const CHARS = 3;
+
 class CategoryViewEntity {
   late final String categoryName;
   late final int type;
@@ -15,10 +19,10 @@ class CategoryViewEntity {
 
 int _getType(int businessType) {
   if (businessType == 0) {
-    return 1;
+    return BOOKS;
   } else if (businessType == 1) {
-    return 2;
+    return HOUSES;
   } else {
-    return 3;
+    return CHARS;
   }
 }

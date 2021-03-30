@@ -8,7 +8,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../books/book_repository_impl_test.mocks.dart';
 import 'category_repository_impl_test.mocks.dart';
 
 @GenerateMocks(
