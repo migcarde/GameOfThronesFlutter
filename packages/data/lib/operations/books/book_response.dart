@@ -1,3 +1,4 @@
+import 'package:domain/operations/books/book_business.dart';
 import 'package:equatable/equatable.dart';
 
 class BookResponse extends Equatable {
@@ -41,4 +42,16 @@ class BookResponse extends Equatable {
         mediaType,
         released
       ];
+}
+
+extension BookResponseExtensions on BookResponse {
+  BookBusiness toDomain() => BookBusiness(
+      name: this.name,
+      isbn: this.isbn,
+      authors: this.authors,
+      numberOfPages: this.numberOfPages,
+      publisher: this.publisher,
+      country: this.country,
+      mediaType: this.mediaType,
+      released: this.released);
 }

@@ -1,4 +1,3 @@
-import 'package:data/operations/books/book_response.dart';
 import 'package:equatable/equatable.dart';
 
 class BookBusiness extends Equatable {
@@ -20,16 +19,6 @@ class BookBusiness extends Equatable {
       required this.country,
       required this.mediaType,
       required this.released});
-
-  factory BookBusiness.fromResponse(BookResponse response) => BookBusiness(
-      name: response.name,
-      isbn: response.isbn,
-      authors: response.authors,
-      numberOfPages: response.numberOfPages,
-      publisher: response.publisher,
-      country: response.country,
-      mediaType: response.mediaType,
-      released: response.released);
 
   @override
   List<Object?> get props => [

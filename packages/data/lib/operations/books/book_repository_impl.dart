@@ -5,6 +5,7 @@ import 'package:domain/operations/books/book_business.dart';
 import 'package:domain/operations/books/book_failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:domain/operations/books/book_repository.dart';
+import 'package:data/operations/books/book_response.dart';
 
 class BookRepositoryImpl implements BookRepository {
   late final BookRemoteDataSource bookRemoteDataSource;
@@ -19,9 +20,7 @@ class BookRepositoryImpl implements BookRepository {
       if (await networkManager.hasInternetConnection) {
         final books = await bookRemoteDataSource.getBooks(type);
 
-        final result = books
-            .map((response) => BookBusiness.fromResponse(response))
-            .toList();
+        final result = books.map((response) => response.toDomain()).toList();
 
         return Right(result);
       } else {

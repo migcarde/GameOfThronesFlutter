@@ -17,10 +17,14 @@ final booksFutureProvider =
 });
 
 Future<BaseListState> _handleBooksSuccess(List<BookBusiness> books) async {
-  final booksViewEntity =
-      books.map((business) => BookViewEntity.fromBusiness(business)).toList();
+  if (books.isEmpty) {
+    return Empty();
+  } else {
+    final booksViewEntity =
+        books.map((business) => BookViewEntity.fromBusiness(business)).toList();
 
-  return Result<BookViewEntity>(result: booksViewEntity);
+    return Result<BookViewEntity>(result: booksViewEntity);
+  }
 }
 
 Error _handleBooksError(BookFailure failure) {
