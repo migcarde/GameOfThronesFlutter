@@ -39,7 +39,7 @@ void main() {
   test('Get local categories - Category know error', () async {
     // Given
     final Either<CategoryFailure, List<CategoryBusiness>> left =
-        Left(CategoryKnowError());
+        Left(GetCategoriesError());
     when(categoryRepository.getLocalCategories())
         .thenAnswer((realInvocation) async => left);
 

@@ -1,4 +1,5 @@
 import 'package:data/operations/categories/category_hive_model.dart';
+import 'package:domain/operations/categories/category_business.dart';
 import 'package:equatable/equatable.dart';
 
 class CategoryResponse extends Equatable {
@@ -12,6 +13,11 @@ class CategoryResponse extends Equatable {
 
   @override
   List<Object?> get props => [categoryName, type];
+}
+
+extension CategoryResponseParser on CategoryResponse {
+  CategoryBusiness toDomain() =>
+      CategoryBusiness(categoryName: this.categoryName, type: this.type);
 }
 
 extension CategoryParser on List<CategoryResponse> {

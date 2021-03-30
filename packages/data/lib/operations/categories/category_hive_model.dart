@@ -1,3 +1,4 @@
+import 'package:domain/operations/categories/category_business.dart';
 import 'package:hive/hive.dart';
 
 part 'category_hive_model.g.dart';
@@ -11,4 +12,9 @@ class CategoryHiveModel {
   late final String categoryName;
 
   CategoryHiveModel({required this.type, required this.categoryName});
+}
+
+extension CategoryHiveModelParser on CategoryHiveModel {
+  CategoryBusiness toDomain() =>
+      CategoryBusiness(categoryName: this.categoryName, type: this.type);
 }

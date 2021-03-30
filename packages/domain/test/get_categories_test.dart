@@ -41,7 +41,7 @@ void main() {
   test('Get categories - Category know error', () async {
     // Given
     final Either<CategoryFailure, List<CategoryBusiness>> left =
-        Left(CategoryKnowError());
+        Left(GetCategoriesError());
     when(categoryRepository.getCategories())
         .thenAnswer((realInvocation) async => left);
 

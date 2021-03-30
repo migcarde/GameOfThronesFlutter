@@ -4,9 +4,10 @@ import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
 import 'package:data/repository_failure.dart';
 import 'package:domain/operations/categories/category_business.dart';
-import 'package:domain/operations/categories/category_error.dart';
 import 'package:domain/operations/categories/category_failure.dart';
 import 'package:domain/operations/categories/category_repository.dart';
+import 'package:data/operations/categories/category_response.dart';
+import 'package:data/operations/categories/category_hive_model.dart';
 
 class CategoryRepositoryImpl extends CategoryRepository {
   late final CategoryRemoteDataSource categoryRemoteDataSource;
@@ -26,9 +27,8 @@ class CategoryRepositoryImpl extends CategoryRepository {
         final categories = await categoryRemoteDataSource.getCategories();
         categoryLocalDataSource.saveCategories(categories);
 
-        final result = categories
-            .map((response) => CategoryBusiness.fromResponse(response))
-            .toList();
+        final result =
+            categories.map((response) => response.toDomain()).toList();
 
         return Right(result);
       } else {
@@ -36,7 +36,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
       }
     } on RepositoryFailure catch (failure) {
       return Left(CategoryRepositoryFailure(failure: failure));
-    } on CategoryError {
+    } on GetCategoriesError {
       return Left(GetCategoriesError());
     }
   }
@@ -47,9 +47,7 @@ class CategoryRepositoryImpl extends CategoryRepository {
     try {
       final categories = await categoryLocalDataSource.getCategories();
 
-      final result = categories
-          .map((model) => CategoryBusiness.fromHiveModel(model))
-          .toList();
+      final result = categories.map((model) => model.toDomain()).toList();
 
       return Right(result);
     } catch (e) {
