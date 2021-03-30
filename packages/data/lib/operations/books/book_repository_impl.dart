@@ -29,7 +29,7 @@ class BookRepositoryImpl implements BookRepository {
       }
     } on RepositoryFailure catch (failure) {
       return Left(BookRepositoryFailure(failure: failure));
-    } on GetBookError {
+    } catch (e) {
       return Left(GetBookError());
     }
   }
