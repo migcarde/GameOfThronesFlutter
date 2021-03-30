@@ -1,6 +1,7 @@
 import 'package:domain/operations/books/get_books.dart';
 import 'package:domain/operations/categories/get_categories.dart';
 import 'package:domain/operations/categories/get_local_categories.dart';
+import 'package:domain/operations/chars/get_chars.dart';
 import 'package:domain/operations/houses/get_houses.dart';
 import 'package:get_it/get_it.dart';
 
@@ -11,6 +12,7 @@ void init() {
   locator.registerFactory(() => GetCategories(categoryRepository: locator()));
   locator.registerFactory(() => GetBooks(bookRepository: locator()));
   locator.registerFactory(() => GetHouses(houseRepository: locator()));
+  locator.registerFactory(() => GetChars(charRepository: locator()));
 
   // Local
   locator

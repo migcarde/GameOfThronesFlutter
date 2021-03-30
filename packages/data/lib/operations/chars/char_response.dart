@@ -1,3 +1,4 @@
+import 'package:domain/operations/chars/char_business.dart';
 import 'package:equatable/equatable.dart';
 
 class CharResponse extends Equatable {
@@ -66,4 +67,21 @@ class CharResponse extends Equatable {
         allegiances,
         playedBy
       ];
+}
+
+extension CharResponseParsing on CharResponse {
+  CharBusiness toDomain() => CharBusiness(
+      id: this.id,
+      name: this.name,
+      gender: this.gender,
+      culture: this.culture,
+      born: this.born,
+      died: this.died,
+      titles: this.titles,
+      aliases: this.aliases,
+      father: this.father,
+      mother: this.mother,
+      spouse: this.spouse,
+      allegiances: this.allegiances,
+      playedBy: this.playedBy);
 }

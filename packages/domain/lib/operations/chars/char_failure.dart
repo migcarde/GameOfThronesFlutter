@@ -10,4 +10,5 @@ class CharRepositoryFailure extends CharFailure {
   CharRepositoryFailure({required this.failure}) : super([failure]);
 }
 
+// This class is used for specific errors from the service
 class GetCharError extends CharFailure {}

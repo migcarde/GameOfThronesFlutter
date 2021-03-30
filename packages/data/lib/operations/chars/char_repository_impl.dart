@@ -5,6 +5,7 @@ import 'package:data/repository_failure.dart';
 import 'package:domain/operations/chars/char_failure.dart';
 import 'package:domain/operations/chars/char_business.dart';
 import 'package:domain/operations/chars/char_repository.dart';
+import 'char_response.dart';
 
 class CharRepositoryImpl implements CharRepository {
   late final CharRemoteDataSource charRemoteDataSource;
@@ -19,9 +20,7 @@ class CharRepositoryImpl implements CharRepository {
       if (await networkManager.hasInternetConnection) {
         final chars = await charRemoteDataSource.getChars(type);
 
-        final results = chars
-            .map((response) => CharBusiness.fromResponse(response))
-            .toList();
+        final results = chars.map((response) => response.toDomain()).toList();
 
         return Right(results);
       } else {

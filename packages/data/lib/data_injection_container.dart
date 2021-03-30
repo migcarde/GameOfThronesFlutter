@@ -7,11 +7,15 @@ import 'package:data/operations/categories/category_local_data_source.dart';
 import 'package:data/operations/categories/category_remote_data_source.dart';
 import 'package:data/operations/categories/category_repository_impl.dart';
 import 'package:data/operations/categories/category_service.dart';
+import 'package:data/operations/chars/char_remote_data_source.dart';
+import 'package:data/operations/chars/char_repository_impl.dart';
+import 'package:data/operations/chars/char_service.dart';
 import 'package:data/operations/houses/house_remote_data_source.dart';
 import 'package:data/operations/houses/house_repository_impl.dart';
 import 'package:data/operations/houses/house_service.dart';
 import 'package:domain/operations/books/book_repository.dart';
 import 'package:domain/operations/categories/category_repository.dart';
+import 'package:domain/operations/chars/char_repository.dart';
 import 'package:domain/operations/houses/house_repository.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
@@ -29,6 +33,8 @@ void init() {
       bookRemoteDataSource: locator(), networkManager: locator()));
   locator.registerLazySingleton<HouseRepository>(() => HouseRepositoryImpl(
       houseRemoteDataSource: locator(), networkManager: locator()));
+  locator.registerLazySingleton<CharRepository>(() => CharRepositoryImpl(
+      charRemoteDataSource: locator(), networkManager: locator()));
 
   // Remote data source
   locator.registerLazySingleton(
@@ -37,6 +43,8 @@ void init() {
       () => BookRemoteDataSource(bookService: locator()));
   locator.registerLazySingleton(
       () => HouseRemoteDataSource(houseService: locator()));
+  locator.registerLazySingleton(
+      () => CharRemoteDataSource(charService: locator()));
 
   // Local data source
   locator.registerLazySingleton(() => CategoryLocalDataSource(hive: locator()));
@@ -45,6 +53,7 @@ void init() {
   locator.registerLazySingleton(() => CategoryService());
   locator.registerLazySingleton(() => BookService());
   locator.registerLazySingleton(() => HouseService());
+  locator.registerLazySingleton(() => CharService());
 
   // Others
   locator.registerLazySingleton(() => Hive);

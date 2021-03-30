@@ -7,6 +7,7 @@ import 'package:game_of_thrones/widgets/books/book_list_screen.dart';
 import 'package:game_of_thrones/widgets/categories/category_item.dart';
 import 'package:game_of_thrones/widgets/categories/category_list_providers.dart';
 import 'package:game_of_thrones/widgets/categories/category_view_entity.dart';
+import 'package:game_of_thrones/widgets/chars/char_list_screen.dart';
 import 'package:game_of_thrones/widgets/houses/house_list_screen.dart';
 import 'package:game_of_thrones/widgets/splash_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -54,9 +55,12 @@ class CategoryListScreen extends ConsumerWidget {
     if (type == BOOKS) {
       result =
           MaterialPageRoute(builder: (context) => BookListScreen(type: type));
-    } else {
+    } else if (type == HOUSES) {
       result =
           MaterialPageRoute(builder: (context) => HouseListScreen(type: type));
+    } else {
+      result =
+          MaterialPageRoute(builder: (context) => CharListScreen(type: type));
     }
 
     return result;

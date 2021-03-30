@@ -1,4 +1,3 @@
-import 'package:data/operations/chars/char_response.dart';
 import 'package:equatable/equatable.dart';
 
 class CharBusiness extends Equatable {
@@ -31,21 +30,6 @@ class CharBusiness extends Equatable {
     required this.allegiances,
     required this.playedBy,
   });
-
-  factory CharBusiness.fromResponse(CharResponse response) => CharBusiness(
-      id: response.id,
-      name: response.name,
-      gender: response.gender,
-      culture: response.culture,
-      born: response.born,
-      died: response.died,
-      titles: response.titles,
-      aliases: response.aliases,
-      father: response.father,
-      mother: response.mother,
-      spouse: response.spouse,
-      allegiances: response.allegiances,
-      playedBy: response.playedBy);
 
   @override
   List<Object?> get props => [
