@@ -36,6 +36,7 @@ Error _handleCharsError(CharFailure failure) {
   }
 }
 
+// Not considered cases like unauthorized or repository exception
 Error _handleRepositoryFailure(CharRepositoryFailure charRepositoryFailure) {
   if (charRepositoryFailure.failure is NoInternet) {
     return Error(message: 'No internet');

@@ -36,6 +36,7 @@ Error _handleBooksError(BookFailure failure) {
   }
 }
 
+// Not considered cases like unauthorized or repository exception
 Error _handleRepositoryFailure(BookRepositoryFailure bookRepositoryFailure) {
   if (bookRepositoryFailure.failure is NoInternet) {
     return Error(message: 'No internet');

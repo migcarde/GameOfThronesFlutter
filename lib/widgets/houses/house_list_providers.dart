@@ -37,6 +37,7 @@ Error _handleHousesError(HouseFailure failure) {
   }
 }
 
+// Not considered cases like unauthorized or repository exception
 Error _handleRepositoryFailure(HouseRepositoryFailure houseRepositoryFailure) {
   if (houseRepositoryFailure.failure is NoInternet) {
     return Error(message: 'No internet');

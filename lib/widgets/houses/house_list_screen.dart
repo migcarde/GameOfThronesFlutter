@@ -19,7 +19,7 @@ class HouseListScreen extends ConsumerWidget {
       body: SafeArea(
         child: houses.when(
           data: (data) => _manageState(data),
-          loading: () => CircularProgressIndicator(),
+          loading: () => Center(child: CircularProgressIndicator()),
           error: (_, __) =>
               Text('Ha ocurrido un error, por favor, inténtelo más tarde'),
         ),

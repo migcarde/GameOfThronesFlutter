@@ -10,4 +10,5 @@ class BookRepositoryFailure extends BookFailure {
   BookRepositoryFailure({required this.failure}) : super([failure]);
 }
 
+// This class is used for specific errors from the service
 class GetBookError extends BookFailure {}
