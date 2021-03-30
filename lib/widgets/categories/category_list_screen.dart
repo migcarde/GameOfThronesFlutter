@@ -9,7 +9,6 @@ import 'package:game_of_thrones/widgets/categories/category_list_providers.dart'
 import 'package:game_of_thrones/widgets/categories/category_view_entity.dart';
 import 'package:game_of_thrones/widgets/chars/char_list_screen.dart';
 import 'package:game_of_thrones/widgets/houses/house_list_screen.dart';
-import 'package:game_of_thrones/widgets/splash_screen.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class CategoryListScreen extends ConsumerWidget {
@@ -20,7 +19,9 @@ class CategoryListScreen extends ConsumerWidget {
     return SafeArea(
       child: categories.when(
           data: (state) => _manageState(state),
-          loading: () => SplashScreen(),
+          loading: () => Center(
+                child: CircularProgressIndicator(),
+              ),
           error: (_, __) =>
               Text('Ha ocurrido un error, por favor, inténtelo más tarde')),
     );
