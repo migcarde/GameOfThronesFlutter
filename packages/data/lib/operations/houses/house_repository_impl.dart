@@ -5,6 +5,7 @@ import 'package:domain/operations/houses/house_failure.dart';
 import 'package:domain/operations/houses/house_business.dart';
 import 'package:dartz/dartz.dart';
 import 'package:domain/operations/houses/house_repository.dart';
+import 'package:data/operations/houses/house_response.dart';
 
 class HouseRepositoryImpl extends HouseRepository {
   late final HouseRemoteDataSource houseRemoteDataSource;
@@ -19,9 +20,7 @@ class HouseRepositoryImpl extends HouseRepository {
       if (await networkManager.hasInternetConnection) {
         final houses = await houseRemoteDataSource.getHouses(type);
 
-        final result = houses
-            .map((response) => HouseBusiness.fromResponse(response))
-            .toList();
+        final result = houses.map((response) => response.toDomain()).toList();
 
         return Right(result);
       } else {

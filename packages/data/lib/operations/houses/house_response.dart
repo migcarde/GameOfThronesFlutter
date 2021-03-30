@@ -1,3 +1,4 @@
+import 'package:domain/operations/houses/house_business.dart';
 import 'package:equatable/equatable.dart';
 
 class HouseResponse extends Equatable {
@@ -20,4 +21,9 @@ class HouseResponse extends Equatable {
 
   @override
   List<Object?> get props => [id, name, region, title];
+}
+
+extension HouseResponseExtensions on HouseResponse {
+  HouseBusiness toDomain() => HouseBusiness(
+      id: this.id, name: this.name, region: this.region, title: this.title);
 }

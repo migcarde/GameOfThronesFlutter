@@ -10,4 +10,5 @@ class HouseRepositoryFailure extends HouseFailure {
   HouseRepositoryFailure({required this.failure}) : super([failure]);
 }
 
+// This class is used for specific errors from the service
 class GetHouseError extends HouseFailure {}
